@@ -79,7 +79,7 @@ public class LongStringLoader
 					 @Override
 					 public void run()
 					 {
-						 listener.onLicenceLoadCompolete();
+						 listener.onLicenceLoadComplete();
 					 }
 				 }
 			);
