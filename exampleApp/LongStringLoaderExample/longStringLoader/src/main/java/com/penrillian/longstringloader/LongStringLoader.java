@@ -2,6 +2,7 @@ package com.penrillian.longstringloader;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class LongStringLoader
 		@Override
 		public void run()
 		{
-			Iterable<String> licenceList =  Splitter.fixedLength(stringSplitLength).split(stringToLoad);
+			Iterable<String> licenceList = getSplitString(stringToLoad);
 			for (final String string : licenceList)
 			{
 				handler.post(new Runnable()
@@ -84,5 +85,12 @@ public class LongStringLoader
 				 }
 			);
 		}
+
+	}
+
+	@NonNull
+	public Iterable<String> getSplitString(String stringToSplit)
+	{
+		return Splitter.fixedLength(stringSplitLength).split(stringToSplit);
 	}
 }
