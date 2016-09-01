@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements LongStringLoadCom
 	}
 
 	@Override
-	public void onLicenceLoadComplete()
+	public void onStringLoadComplete()
 	{
 		progress.setVisibility(View.INVISIBLE);
 	}
