@@ -15,15 +15,14 @@ import java.util.List;
 @RunWith(AndroidJUnit4.class)
 public class LongStringLoaderTest
 {
-	private static LongStringLoader loader;
+	private LongStringLoader loader;
 
 	@BeforeClass
 	public static void setUp() {
 		Looper.prepare();
-		loader = createLoaderWithSplitLength(20);
 	}
 
-	private static LongStringLoader createLoaderWithSplitLength(int splitLength)
+	private LongStringLoader createLoaderWithSplitLength(int splitLength)
 	{
 		return new LongStringLoader(InstrumentationRegistry.getContext(), new LongStringLoadCompleteListener()
 		{
@@ -38,12 +37,14 @@ public class LongStringLoaderTest
 	@Test
 	public void testCreateObject() throws Exception
 	{
+		loader = createLoaderWithSplitLength(20);
 		Assert.assertNotNull(loader);
 	}
 
 	@Test
 	public void testGetLengthOfLongestWord() throws Exception
 	{
+		loader = createLoaderWithSplitLength(20);
 		Assert.assertEquals(9, loader.getLengthOfLongestWord("THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS"));
 	}
 
@@ -52,6 +53,7 @@ public class LongStringLoaderTest
 	{
 		String stringToSplit = "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS";
 
+		loader = createLoaderWithSplitLength(20);
 		List<String> splitStringList = loader.getSplitString(stringToSplit);
 
 		Assert.assertTrue(splitStringList.size() > 0);
