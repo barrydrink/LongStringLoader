@@ -2,15 +2,11 @@ package com.penrillian.longstringloader;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class LongStringLoader
@@ -54,7 +50,7 @@ public class LongStringLoader
 		@Override
 		public void run()
 		{
-			List<String> licenceList = getSplitString(stringToLoad);
+			List<String> licenceList = LongStringUtils.getSplitString(stringToLoad, stringSplitLength);
 			for (final String string : licenceList)
 			{
 				handler.post(new Runnable()
@@ -89,32 +85,5 @@ public class LongStringLoader
 			);
 		}
 
-	}
-
-	@NonNull
-	public List<String> getSplitString(String stringToSplit)
-	{
-		stringSplitLength = Math.max(getLengthOfLongestWord(stringToSplit), stringSplitLength);
-
-		List<String> splitString = new ArrayList<>();
-
-		Pattern p = Pattern.compile("\\G\\s*(.{1,"+stringSplitLength+"})(?=\\s|$)", Pattern.DOTALL);
-		Matcher m2 = p.matcher(stringToSplit);
-		while (m2.find())
-		{
-			splitString.add(m2.group(1));
-		}
-		return splitString;
-	}
-
-	public int getLengthOfLongestWord(String stringToSplit)
-	{
-		int longestWordLength = 0;
-		Matcher m = Pattern.compile("\\s*(\\w+)", Pattern.CASE_INSENSITIVE).matcher(stringToSplit);
-		while(m.find())
-		{
-			longestWordLength = Math.max(longestWordLength, m.group(1).length());
-		}
-		return  longestWordLength;
 	}
 }
