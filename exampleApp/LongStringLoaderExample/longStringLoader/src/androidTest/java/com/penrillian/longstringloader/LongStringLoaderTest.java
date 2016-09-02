@@ -42,6 +42,12 @@ public class LongStringLoaderTest
 	}
 
 	@Test
+	public void testGetLengthOfLongestWord() throws Exception
+	{
+		Assert.assertEquals(9, loader.getLengthOfLongestWord("THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS"));
+	}
+
+	@Test
 	public void testGetSplitString() throws Exception
 	{
 		String stringToSplit = "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS";
@@ -49,14 +55,20 @@ public class LongStringLoaderTest
 		List<String> splitStringList = loader.getSplitString(stringToSplit);
 
 		Assert.assertTrue(splitStringList.size() > 0);
-		Assert.assertEquals("THIS SOFTWARE IS PROVIDED", splitStringList.get(0));
+		Assert.assertEquals("THIS SOFTWARE IS", splitStringList.get(0));
+		Assert.assertEquals("PROVIDED BY THE", splitStringList.get(1));
+		Assert.assertEquals("COPYRIGHT HOLDERS", splitStringList.get(2));
 
 		loader = createLoaderWithSplitLength(12);
 		splitStringList = loader.getSplitString(stringToSplit);
 
 		Assert.assertTrue(splitStringList.size() > 0);
-		Assert.assertEquals("THIS SOFTWARE", splitStringList.get(0));
-		Assert.assertEquals("IS PROVIDED", splitStringList.get(1));
+		Assert.assertEquals("THIS", splitStringList.get(0));
+		Assert.assertEquals("SOFTWARE IS", splitStringList.get(1));
+		Assert.assertEquals("PROVIDED BY", splitStringList.get(2));
+		Assert.assertEquals("THE", splitStringList.get(3));
+		Assert.assertEquals("COPYRIGHT", splitStringList.get(4));
+		Assert.assertEquals("HOLDERS", splitStringList.get(5));
 
 		loader = createLoaderWithSplitLength(1);
 		splitStringList = loader.getSplitString(stringToSplit);
@@ -64,33 +76,28 @@ public class LongStringLoaderTest
 		Assert.assertTrue(splitStringList.size() > 0);
 		Assert.assertEquals("THIS", splitStringList.get(0));
 		Assert.assertEquals("SOFTWARE", splitStringList.get(1));
+		Assert.assertEquals("IS", splitStringList.get(2));
+		Assert.assertEquals("PROVIDED", splitStringList.get(3));
+		Assert.assertEquals("BY THE", splitStringList.get(4));
+		Assert.assertEquals("COPYRIGHT", splitStringList.get(5));
+		Assert.assertEquals("HOLDERS", splitStringList.get(6));
 
-	}
+		loader = createLoaderWithSplitLength(10);
+		splitStringList = loader.getSplitString("1234567890");
 
-	@Test
-	public void testFixBrokenWords() throws Exception
-	{
-		List<String> splitStringListWithBrokenWords = new ArrayList<>();
-		splitStringListWithBrokenWords.add("THIS SOFTWARE IS PROV");
-		splitStringListWithBrokenWords.add("IDED BY THE COPYRIGHT HOLDERS");
+		Assert.assertTrue(splitStringList.size() == 1);
+		Assert.assertEquals("1234567890", splitStringList.get(0));
 
-		List<String> splitStringListWithFixedWords = loader.fixBrokenWords(splitStringListWithBrokenWords);
+		loader = createLoaderWithSplitLength(10);
+		splitStringList = loader.getSplitString("12345678901");
 
-		Assert.assertEquals("THIS SOFTWARE IS PROVIDED", splitStringListWithFixedWords.get(0));
-		Assert.assertEquals("BY THE COPYRIGHT HOLDERS", splitStringListWithFixedWords.get(1));
-	}
+		Assert.assertTrue(splitStringList.size() == 1);
+		Assert.assertEquals("12345678901", splitStringList.get(0));
 
-	@Test
-	public void testGetStartOfBrokenString() throws Exception
-	{
-		String stringWithBrokenWord = "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLD";
-		Assert.assertEquals("HOLD", loader.getStartOfBrokenString(stringWithBrokenWord));
-	}
+		loader = createLoaderWithSplitLength(11);
+		splitStringList = loader.getSplitString("1234567890");
 
-	@Test
-	public void testGetEndOfBrokenString() throws Exception
-	{
-		String stringWithBrokenWord = "TWARE IS PROVIDED BY THE COPYRIGHT HOLDERS";
-		Assert.assertEquals("TWARE", loader.getEndOfBrokenString(stringWithBrokenWord));
+		Assert.assertTrue(splitStringList.size() == 1);
+		Assert.assertEquals("1234567890", splitStringList.get(0));
 	}
 }
