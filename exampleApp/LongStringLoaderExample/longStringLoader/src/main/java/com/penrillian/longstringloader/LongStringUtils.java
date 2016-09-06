@@ -13,10 +13,10 @@ public class LongStringUtils
 	public static List<String> getSplitString(String stringToSplit, int stringSplitLength)
 	{
 		/*
-		length to split string needs to be at least as long as the longest series of non-whitespace in the string.
-		E.G. if the following is the longest series of non-whitespace in the string
-			licences:
-		then stringSplitLength needs to be at least 9 (8 letters plus a colon)
+			length to split string needs to be at least as long as the longest series of non-whitespace in the string.
+			E.G. if the following is the longest series of non-whitespace in the string
+				"licences:"
+			then stringSplitLength needs to be at least 9 (8 letters plus a colon)
 		 */
 		stringSplitLength = Math.max(getLengthOfLongestWord(stringToSplit), stringSplitLength);
 
