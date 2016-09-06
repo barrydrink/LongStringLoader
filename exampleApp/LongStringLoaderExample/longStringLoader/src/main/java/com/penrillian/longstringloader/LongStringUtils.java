@@ -31,10 +31,10 @@ public class LongStringUtils
 		return splitString;
 	}
 
-	public static int getLengthOfLongestWord(String stringToSplit)
+	public static int getLengthOfLongestWord(String string)
 	{
 		int longestWordLength = 0;
-		Matcher m = Pattern.compile("\\s*(\\S+)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE).matcher(stringToSplit);
+		Matcher m = Pattern.compile("\\s*(\\S+)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE).matcher(string);
 		while(m.find())
 		{
 			longestWordLength = Math.max(longestWordLength, m.group(1).length());
