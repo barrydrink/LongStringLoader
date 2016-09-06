@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity implements LongStringLoadCom
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		progress = (ProgressBar) findViewById(R.id.loading_progress);
-		textViewLayout = (LinearLayout) findViewById(R.id.text_view_layout);
 	}
 
 	public void showOpenSourceLicencing(View view)
 	{
+		setContentView(R.layout.activity_main);
+		progress = (ProgressBar) findViewById(R.id.loading_progress);
+		textViewLayout = (LinearLayout) findViewById(R.id.text_view_layout);
 		progress.setVisibility(View.VISIBLE);
 		new LongStringLoader(this, this, textViewLayout).load(GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this));
 	}

@@ -12,7 +12,13 @@ public class LongStringUtils
 	@NonNull
 	public static List<String> getSplitString(String stringToSplit, int stringSplitLength)
 	{
-		stringSplitLength = Math.max(getLengthOfLongestWord(stringToSplit), stringSplitLength); //length to split string needs to be at least as long as the longest word in the string
+		/*
+		length to split string needs to be at least as long as the longest series of non-whitespace in the string.
+		E.G. if the following is the longest series of non-whitespace in the string
+			licences:
+		then stringSplitLength needs to be at least 9 (8 letters plus a colon)
+		 */
+		stringSplitLength = Math.max(getLengthOfLongestWord(stringToSplit), stringSplitLength);
 
 		List<String> splitString = new ArrayList<>();
 
@@ -28,7 +34,7 @@ public class LongStringUtils
 	public static int getLengthOfLongestWord(String stringToSplit)
 	{
 		int longestWordLength = 0;
-		Matcher m = Pattern.compile("\\s*(\\w+)", Pattern.CASE_INSENSITIVE).matcher(stringToSplit);
+		Matcher m = Pattern.compile("\\s*(\\S+)", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE).matcher(stringToSplit);
 		while(m.find())
 		{
 			longestWordLength = Math.max(longestWordLength, m.group(1).length());

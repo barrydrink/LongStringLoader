@@ -20,6 +20,14 @@ public class LongStringUtilsTest
 	}
 
 	@Test
+	public void testGetLengthOfLongestWordWhenSeriesOfNonWordCharactersExist() throws Exception
+	{
+		Assert.assertEquals(74, loader.getLengthOfLongestWord("==========================================================================\n" +
+				"\n" +
+				"This Open Source Licenses:"));
+	}
+
+	@Test
 	public void testGetSplitString() throws Exception
 	{
 		String stringToSplit = "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS";
@@ -66,5 +74,25 @@ public class LongStringUtilsTest
 
 		Assert.assertTrue(splitStringList.size() == 1);
 		Assert.assertEquals("1234567890", splitStringList.get(0));
+	}
+
+	@Test
+	public void testGetSplitStringWithLineBreakAtSplitPoint() throws Exception
+	{
+		String stringToSplit = "==========================================================================\n" +
+				"\n" +
+				"\n" +
+				"Open Source Licenses:\n" +
+				"\n" +
+				"==========================================================================\n" +
+				"\n" +
+				"This is a string with lots of white space and non alpha-numeric characters";
+		List<String> splitStringList = loader.getSplitString(stringToSplit, 9);
+
+		Assert.assertTrue(splitStringList.size() > 0);
+		Assert.assertEquals("==========================================================================", splitStringList.get(0));
+		Assert.assertEquals("Open Source Licenses:\n", splitStringList.get(1));
+		Assert.assertEquals("==========================================================================", splitStringList.get(2));
+		Assert.assertEquals("This is a string with lots of white space and non alpha-numeric characters", splitStringList.get(3));
 	}
 }
