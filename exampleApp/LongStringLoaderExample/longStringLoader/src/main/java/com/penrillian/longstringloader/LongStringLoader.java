@@ -2,6 +2,7 @@ package com.penrillian.longstringloader;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,16 +19,24 @@ public class LongStringLoader
 	private final Context context;
 	private StringLoadTask stringLoadingTask;
 
-	public LongStringLoader(Context context, LongStringLoadCompleteListener listener, LinearLayout containerLayout)
+	public LongStringLoader(@NonNull Context context, LongStringLoadCompleteListener listener, @NonNull LinearLayout containerLayout) throws LongStringLoaderException
 	{
+		if(context == null || containerLayout == null || threadSleepMillis < 0)
+		{
+			throw new LongStringLoaderException("Invalid parameters");
+		}
 		this.context = context;
 		this.listener = listener;
 		this.containerLayout = containerLayout;
 	}
 
-	public LongStringLoader(Context context, LongStringLoadCompleteListener listener, LinearLayout containerLayout, int splitStringLength, int threadSleepMillis)
+	public LongStringLoader(@NonNull Context context, LongStringLoadCompleteListener listener, @NonNull LinearLayout containerLayout, int splitStringLength, int threadSleepMillis) throws LongStringLoaderException
 	{
 		this(context, listener, containerLayout);
+		if(threadSleepMillis < 0)
+		{
+			throw new LongStringLoaderException("Invalid parameters");
+		}
 		this.threadSleepMillis = threadSleepMillis;
 		this.stringSplitLength = splitStringLength;
 	}

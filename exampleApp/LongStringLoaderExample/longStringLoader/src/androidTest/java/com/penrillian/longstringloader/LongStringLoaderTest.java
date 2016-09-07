@@ -3,6 +3,7 @@ package com.penrillian.longstringloader;
 import android.os.Looper;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.LinearLayout;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -12,14 +13,12 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class LongStringLoaderTest
 {
-	private LongStringLoader loader;
-
 	@BeforeClass
 	public static void setUp() {
 		Looper.prepare();
 	}
 
-	private LongStringLoader createLoaderWithSplitLength(int splitLength)
+	private LongStringLoader createLoaderWithSplitLength(int splitLength) throws LongStringLoaderException
 	{
 		return new LongStringLoader(InstrumentationRegistry.getContext(), new LongStringLoadCompleteListener()
 		{
@@ -28,13 +27,13 @@ public class LongStringLoaderTest
 			{
 
 			}
-		}, null, splitLength, 0);
+		}, new LinearLayout(InstrumentationRegistry.getContext()), splitLength, 0);
 	}
 
 	@Test
-	public void testCreateObject() throws Exception
+	public void testCreateObject() throws Exception, LongStringLoaderException
 	{
-		loader = createLoaderWithSplitLength(20);
+		LongStringLoader loader = createLoaderWithSplitLength(20);
 		Assert.assertNotNull(loader);
 	}
 }
