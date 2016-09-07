@@ -11,18 +11,16 @@ import java.util.List;
 @RunWith(AndroidJUnit4.class)
 public class LongStringUtilsTest
 {
-	private LongStringUtils loader;
-
 	@Test
 	public void testGetLengthOfLongestWord() throws Exception
 	{
-		Assert.assertEquals(9, loader.getLengthOfLongestWord("THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS"));
+		Assert.assertEquals(9, LongStringUtils.getLengthOfLongestWord("THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS"));
 	}
 
 	@Test
 	public void testGetLengthOfLongestWordWhenSeriesOfNonWordCharactersExist() throws Exception
 	{
-		Assert.assertEquals(74, loader.getLengthOfLongestWord("==========================================================================\n" +
+		Assert.assertEquals(74, LongStringUtils.getLengthOfLongestWord("==========================================================================\n" +
 				"\n" +
 				"This Open Source Licenses:"));
 	}
@@ -32,14 +30,14 @@ public class LongStringUtilsTest
 	{
 		String stringToSplit = "THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS";
 
-		List<String> splitStringList = loader.getSplitString(stringToSplit, 20);
+		List<String> splitStringList = LongStringUtils.getSplitString(stringToSplit, 20);
 
 		Assert.assertTrue(splitStringList.size() > 0);
 		Assert.assertEquals("THIS SOFTWARE IS", splitStringList.get(0));
 		Assert.assertEquals("PROVIDED BY THE", splitStringList.get(1));
 		Assert.assertEquals("COPYRIGHT HOLDERS", splitStringList.get(2));
 
-		splitStringList = loader.getSplitString(stringToSplit, 12);
+		splitStringList = LongStringUtils.getSplitString(stringToSplit, 12);
 
 		Assert.assertTrue(splitStringList.size() > 0);
 		Assert.assertEquals("THIS", splitStringList.get(0));
@@ -49,7 +47,7 @@ public class LongStringUtilsTest
 		Assert.assertEquals("COPYRIGHT", splitStringList.get(4));
 		Assert.assertEquals("HOLDERS", splitStringList.get(5));
 
-		splitStringList = loader.getSplitString(stringToSplit, 1);
+		splitStringList = LongStringUtils.getSplitString(stringToSplit, 1);
 
 		Assert.assertTrue(splitStringList.size() > 0);
 		Assert.assertEquals("THIS", splitStringList.get(0));
@@ -60,17 +58,17 @@ public class LongStringUtilsTest
 		Assert.assertEquals("COPYRIGHT", splitStringList.get(5));
 		Assert.assertEquals("HOLDERS", splitStringList.get(6));
 
-		splitStringList = loader.getSplitString("1234567890", 10);
+		splitStringList = LongStringUtils.getSplitString("1234567890", 10);
 
 		Assert.assertTrue(splitStringList.size() == 1);
 		Assert.assertEquals("1234567890", splitStringList.get(0));
 
-		splitStringList = loader.getSplitString("12345678901", 10);
+		splitStringList = LongStringUtils.getSplitString("12345678901", 10);
 
 		Assert.assertTrue(splitStringList.size() == 1);
 		Assert.assertEquals("12345678901", splitStringList.get(0));
 
-		splitStringList = loader.getSplitString("1234567890", 11);
+		splitStringList = LongStringUtils.getSplitString("1234567890", 11);
 
 		Assert.assertTrue(splitStringList.size() == 1);
 		Assert.assertEquals("1234567890", splitStringList.get(0));
@@ -87,7 +85,7 @@ public class LongStringUtilsTest
 				"==========================================================================\n" +
 				"\n" +
 				"This is a string with lots of white space and non alpha-numeric characters";
-		List<String> splitStringList = loader.getSplitString(stringToSplit, 9);
+		List<String> splitStringList = LongStringUtils.getSplitString(stringToSplit, 9);
 
 		Assert.assertTrue(splitStringList.size() > 0);
 		Assert.assertEquals("==========================================================================", splitStringList.get(0));

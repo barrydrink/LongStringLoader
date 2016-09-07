@@ -16,6 +16,7 @@ public class LongStringLoader
 	private final LinearLayout containerLayout;
 	private final LongStringLoadCompleteListener listener;
 	private final Context context;
+	private StringLoadTask stringLoadingTask;
 
 	public LongStringLoader(Context context, LongStringLoadCompleteListener listener, LinearLayout containerLayout)
 	{
@@ -33,36 +34,46 @@ public class LongStringLoader
 
 	public void load(String stringToLoad)
 	{
-		new Thread(new Task(stringToLoad)).start();
+		stringLoadingTask = new StringLoadTask(stringToLoad);
+		new Thread(stringLoadingTask).start();
 	}
 	Handler handler = new Handler();
 
-	class Task implements Runnable
+	class StringLoadTask implements Runnable
 	{
+		private volatile boolean stop;
 		private final String stringToLoad;
 		TextView currentTextView;
 
-		public Task(String stringToLoad)
+		public StringLoadTask(String stringToLoad)
 		{
 			this.stringToLoad = stringToLoad;
+		}
+
+		public void stop()
+		{
+			stop = true;
 		}
 
 		@Override
 		public void run()
 		{
+			stop = false;
 			List<String> licenceList = LongStringUtils.getSplitString(stringToLoad, stringSplitLength);
 			for (final String string : licenceList)
 			{
+				if(stop)
+					return;
 				handler.post(new Runnable()
 				{
 					@Override
 					public void run()
 					{
-					currentTextView = new TextView(context);
-					currentTextView.setVisibility(View.GONE);
-					currentTextView.append(string);
-					currentTextView.setVisibility(View.VISIBLE);
-					containerLayout.addView(currentTextView);
+						currentTextView = new TextView(context);
+						currentTextView.setVisibility(View.GONE);
+						currentTextView.append(string);
+						currentTextView.setVisibility(View.VISIBLE);
+						containerLayout.addView(currentTextView);
 					}
 				});
 				try
@@ -85,5 +96,10 @@ public class LongStringLoader
 			);
 		}
 
+	}
+
+	public void stop()
+	{
+		stringLoadingTask.stop();
 	}
 }
