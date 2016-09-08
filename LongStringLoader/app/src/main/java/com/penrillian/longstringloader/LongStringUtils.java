@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 
 public class LongStringUtils
 {
+	private LongStringUtils(){}
+
 	@NonNull
 	public static List<String> getSplitString(String stringToSplit, int stringSplitLength)
 	{

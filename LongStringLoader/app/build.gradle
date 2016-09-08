@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         minSdkVersion 14
@@ -25,3 +25,35 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.4'
     androidTestCompile 'com.android.support.test:rules:0.4'
 }
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    destinationDir = file("build/javadoc")
+    failOnError false
+}
+
+task createJavaDocJar(type: Jar) {
+    from ('build/javadoc')
+    destinationDir file('build')
+    baseName = 'longstringloader-' + android.defaultConfig.versionName + '-javadoc'
+}
+createJavaDocJar.dependsOn(javadoc)
+
+task createSourcesJar(type: Jar) {
+    from ('src/main/java/com/penrillian/longstringloader')
+    destinationDir file('build')
+    baseName = 'longstringloader-' + android.defaultConfig.versionName + '-sources'
+    include('*.java')
+}
+
+task createJars(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('build')
+    include('classes.jar')
+    rename('classes.jar', ('longstringloader-' + android.defaultConfig.versionName + '.jar'))
+}
+createJars.dependsOn(clean, build, createSourcesJar, createJavaDocJar)
+createJavaDocJar.mustRunAfter build
+createSourcesJar.mustRunAfter build
+build.mustRunAfter clean
