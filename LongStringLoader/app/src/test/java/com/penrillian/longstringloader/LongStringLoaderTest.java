@@ -2,27 +2,28 @@ package com.penrillian.longstringloader;
 
 import android.content.Context;
 import android.os.Looper;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
 import android.widget.LinearLayout;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(AndroidJUnit4.class)
+@RunWith(MockitoJUnitRunner.class)
 public class LongStringLoaderTest
 {
 	private static LongStringLoadCompleteListener longStringLoadCompleteListener;
 	private static LinearLayout linearLayout;
+	@Mock
 	private static Context context;
 
 	@BeforeClass
 	public static void setUp() {
 		Looper.prepare();
-		context = InstrumentationRegistry.getContext();
-		linearLayout = new LinearLayout(InstrumentationRegistry.getContext());
+
+		linearLayout = new LinearLayout(context);
 		longStringLoadCompleteListener = new LongStringLoadCompleteListener()
 		{
 			@Override
