@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-
 def siteUrl = 'https://github.com/Penrillian/LongStringLoader'      // Homepage URL of the library
 def gitUrl = 'https://github.com/Penrillian/LongStringLoader.git'   // Git repository URL
 group = "com.penrillian"
@@ -10,13 +9,11 @@ version = "0.0.1-beta"
 
 install {
     repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
         pom {
 
             project {
                 packaging 'aar'
 
-                // Add your description here
                 name "Solution to Android UI freezing when loading very long strings into Android's TextView component"
                 url siteUrl
 
