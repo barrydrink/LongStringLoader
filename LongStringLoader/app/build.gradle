@@ -1,6 +1,49 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
+
+def siteUrl = 'https://github.com/Penrillian/LongStringLoader'      // Homepage URL of the library
+def gitUrl = 'https://github.com/Penrillian/LongStringLoader.git'   // Git repository URL
+group = "com.penrillian"
+version = "0.0.1-beta"
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+
+            project {
+                packaging 'aar'
+
+                // Add your description here
+                name "Solution to Android UI freezing when loading very long strings into Android's TextView component"
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'barry'
+                        name 'Barry Drinkwater'
+                        email 'barry@penrillian.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion 24
@@ -10,7 +53,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,58 +71,45 @@ android {
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    androidTestCompile 'com.android.support.test:runner:0.4'
-    androidTestCompile 'com.android.support.test:rules:0.4'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
 }
 
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    destinationDir = file("build/javadoc")
-    failOnError false
 }
 
-task createJavaDocJar(type: Jar) {
-    from ('build/javadoc')
-    destinationDir file('build')
-    baseName = 'longstringloader-' + android.defaultConfig.versionName + '-javadoc'
-}
-createJavaDocJar.dependsOn(javadoc)
-
-task createSourcesJar(type: Jar) {
-    from ('src/main/java/com/penrillian/longstringloader')
-    destinationDir file('build')
-    baseName = 'longstringloader-' + android.defaultConfig.versionName + '-sources'
-    include('*.java')
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
-task createJars(type: Copy) {
-    from('build/intermediates/bundles/release/')
-    into('build')
-    include('classes.jar')
-    rename('classes.jar', ('longstringloader-' + android.defaultConfig.versionName + '.jar'))
+artifacts {
+    archives javadocJar
+    archives sourcesJar
 }
-createJars.dependsOn(clean, build, createSourcesJar, createJavaDocJar)
-createJavaDocJar.mustRunAfter build
-createSourcesJar.mustRunAfter build
-build.mustRunAfter clean
 
-task createPom << {
-    pom {
-        project {
-            groupId 'com.penrillian'
-            artifactId 'longstringloader'
-            version android.defaultConfig.versionName
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-            inceptionYear '2016'
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'repo'
-                }
-            }
-        }
-    }.writeTo("build/pom.xml")
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "LongStringLoader"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
 }
