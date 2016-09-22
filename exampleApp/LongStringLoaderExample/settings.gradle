@@ -1,1 +1,1 @@
-include ':app', ':longStringLoader'
+include ':app'
