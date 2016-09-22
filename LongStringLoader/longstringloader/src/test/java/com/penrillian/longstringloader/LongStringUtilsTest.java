@@ -90,11 +90,4 @@ public class LongStringUtilsTest
 		Assert.assertEquals("==========================================================================", splitStringList.get(2));
 		Assert.assertEquals("This is a string with lots of white space and non alpha-numeric characters", splitStringList.get(3));
 	}
-
-
-	@Test
-	public void testDeliberatelyFailingTest() throws Exception
-	{
-		Assert.assertEquals(1, 2);
-	}
 }
