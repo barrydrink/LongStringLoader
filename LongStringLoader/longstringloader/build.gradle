@@ -102,7 +102,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = "penrillian-maven"
         name = "LongStringLoader"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
