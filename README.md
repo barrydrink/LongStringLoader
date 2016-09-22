@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/penrillian-barry/penrillian-maven/LongStringLoader/images/download.svg) ](https://bintray.com/penrillian-barry/penrillian-maven/LongStringLoader/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/penrillian/penrillian-maven/LongStringLoader/images/download.svg) ](https://bintray.com/penrillian/penrillian-maven/LongStringLoader/_latestVersion)
 
 # LongStringLoader
 
