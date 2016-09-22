@@ -13,6 +13,7 @@ See the example app for usage instructions.
 To include in your project:
 
 ### Maven
+
 ```
 <dependency>
   <groupId>com.penrillian</groupId>
@@ -28,6 +29,7 @@ compile 'com.penrillian:longstringloader:0.0.1-beta'
 ```
 
 ### Ivy
+
 ```
 <dependency org='com.penrillian' name='longstringloader' rev='0.0.1-beta'>
   <artifact name='$AID' ext='pom'></artifact>
