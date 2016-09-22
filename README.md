@@ -2,7 +2,9 @@
 
 # LongStringLoader
 
-Solution to loading long strings in Android TextViews, such as Google's open source licences (553253 characters on a Motorola G5 running Android 6. This takes 7 seconds to load into a TextView and has to be done on the UI thread, blocking the UI).
+Solution to loading long strings in Android TextViews.
+
+The motivation for this component was the requirement by Google to display their open source licence text if their mapping APIs were used. This text is 553253 characters long and a Motorola G5 running Android 6 takes 7 seconds to load into a TextView. The loading into a TextView has to be done on the UI thread, blocking the UI.
 
 See the example app for usage instructions.
 
