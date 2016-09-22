@@ -13,7 +13,7 @@ See the example app for usage instructions.
 To include in your project:
 
 ### Maven
-```
+```sh
 <dependency>
   <groupId>com.penrillian</groupId>
   <artifactId>longstringloader</artifactId>
@@ -23,12 +23,12 @@ To include in your project:
 ```
 
 ### Gradle
-```
+```sh
 compile 'com.penrillian:longstringloader:0.0.1-beta'
 ```
 
 ### Ivy
-```
+```sh
 <dependency org='com.penrillian' name='longstringloader' rev='0.0.1-beta'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
