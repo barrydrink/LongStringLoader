@@ -5,16 +5,16 @@ before_install:
  
 script: ./gradlew :longstringloader:tasks --all
 
-android:
-  components:
+#android:
+#  components:
     # Uncomment the lines below if you want to
     # use the latest revision of Android SDK Tools
 #    - platform-tools
 #    - tools
 
-    # The BuildTools version used by your project
-    - build-tools-24.0.2
-
-    # The SDK version used to compile your project
-    - android-24
+#    # The BuildTools version used by your project
+#    - build-tools-24.0.2
+#
+#    # The SDK version used to compile your project
+#    - android-24
 
