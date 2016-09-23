@@ -15,3 +15,5 @@ android:
 
     # The SDK version used to compile your project
     - android-24
+
+    script: ./gradlew connectedAndroidTest
