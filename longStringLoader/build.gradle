@@ -1,46 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-
-def siteUrl = 'https://github.com/Penrillian/LongStringLoader'      // Homepage URL of the library
-def gitUrl = 'https://github.com/Penrillian/LongStringLoader.git'   // Git repository URL
-group = 'com.penrillian'
-version = '0.0.2-beta'
-
-install {
-    repositories.mavenInstaller {
-        pom {
-
-            project {
-                packaging 'aar'
-
-                name 'Solution to Android UI freezing when loading very long strings into an Android TextView component'
-                url siteUrl
-
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'barry'
-                        name 'Barry Drinkwater'
-                        email 'barry@penrillian.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-
-                }
-            }
-        }
-    }
-}
 
 android {
     compileSdkVersion 24
@@ -71,48 +29,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
-}
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-Properties properties = new Properties()
-try {
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-} catch (Exception ignored) {
-    properties.put('bintray.user', System.env.BINTRAY_USER)
-    properties.put('bintray.apikey', System.env.BINTRAY_APIKEY)
-}
-
-bintray {
-    user = properties.getProperty('bintray.user')
-    key = properties.getProperty('bintray.apikey')
-
-    configurations = ['archives']
-    pkg {
-        repo = 'penrillian-maven'
-        userOrg = 'penrillian'
-        name = 'LongStringLoader'
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ['Apache-2.0']
-        publish = false
-    }
 }
