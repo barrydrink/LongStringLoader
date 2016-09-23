@@ -4,8 +4,8 @@ apply plugin: 'com.jfrog.bintray'
 
 def siteUrl = 'https://github.com/Penrillian/LongStringLoader'      // Homepage URL of the library
 def gitUrl = 'https://github.com/Penrillian/LongStringLoader.git'   // Git repository URL
-group = "com.penrillian"
-version = "0.0.2-beta"
+group = 'com.penrillian'
+version = '0.0.2-beta'
 
 install {
     repositories.mavenInstaller {
@@ -14,7 +14,7 @@ install {
             project {
                 packaging 'aar'
 
-                name "Solution to Android UI freezing when loading very long strings into Android's TextView component"
+                name 'Solution to Android UI freezing when loading very long strings into an Android TextView component'
                 url siteUrl
 
                 // Set your license
@@ -44,14 +44,14 @@ install {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion '24.0.2'
 
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 24
         versionCode 1
         versionName version
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -97,22 +97,22 @@ Properties properties = new Properties()
 try {
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
 } catch (Exception ignored) {
-    properties.put("bintray.user", System.env.BINTRAY_USER)
-    properties.put("bintray.apikey", System.env.BINTRAY_APIKEY)
+    properties.put('bintray.user', System.env.BINTRAY_USER)
+    properties.put('bintray.apikey', System.env.BINTRAY_APIKEY)
 }
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
 
     configurations = ['archives']
     pkg {
-        repo = "penrillian-maven"
-        userOrg = "penrillian"
-        name = "LongStringLoader"
+        repo = 'penrillian-maven'
+        userOrg = 'penrillian'
+        name = 'LongStringLoader'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
+        licenses = ['Apache-2.0']
         publish = false
     }
 }
