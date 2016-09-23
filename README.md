@@ -1,4 +1,4 @@
-[ ![Download](https://api.bintray.com/packages/penrillian/penrillian-maven/LongStringLoader/images/download.svg) ](https://bintray.com/penrillian/penrillian-maven/LongStringLoader/_latestVersion)[![Build Status](https://travis-ci.org/Penrillian/LongStringLoader.svg?branch=dev)](https://travis-ci.org/Penrillian/LongStringLoader)
+[ ![Download](https://api.bintray.com/packages/penrillian/penrillian-maven/LongStringLoader/images/download.svg) ](https://bintray.com/penrillian/penrillian-maven/LongStringLoader/_latestVersion) [![Build Status](https://travis-ci.org/Penrillian/LongStringLoader.svg?branch=dev)](https://travis-ci.org/Penrillian/LongStringLoader)
 
 # LongStringLoader
 
