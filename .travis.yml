@@ -3,7 +3,7 @@ language: android
 before_install:
  - chmod +x gradlew
  
-script: ./gradlew :longstringloader:test
+script: ./gradlew tasks
 
 android:
   components:
