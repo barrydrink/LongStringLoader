@@ -13,4 +13,4 @@ android:
 before_install:
  - chmod +x gradlew
 
-script: ./gradlew build test
+script: ./gradlew build :longstringloader:test
