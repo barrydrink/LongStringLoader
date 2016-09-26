@@ -1,7 +1,6 @@
 language: android
 jdk: oraclejdk8
 sudo: false
-
 android:
   components:
     - platform-tools
@@ -9,8 +8,6 @@ android:
     - build-tools-24.0.2
     - android-24
     - extra-android-m2repository
-
 before_install:
  - chmod +x gradlew
-
 script: ./gradlew build :longstringloader:test
