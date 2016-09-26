@@ -5,7 +5,7 @@ before_install:
 
 jdk: oraclejdk8
 
-script: ./gradlew :longstringloader:test
+script: ./gradlew build :longstringloader:test
 
 android:
   components:
