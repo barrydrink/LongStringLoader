@@ -3,6 +3,8 @@ language: android
 before_install:
  - chmod +x gradlew
 
+jdk: oraclejdk8
+
 script: ./gradlew :longstringloader:test
 
 android:
