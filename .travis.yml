@@ -10,4 +10,4 @@ android:
     - extra-android-m2repository
 before_install:
  - chmod +x gradlew
-script: ./gradlew test --info
+script: ./gradlew test --debug
