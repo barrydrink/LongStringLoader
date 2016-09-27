@@ -7,6 +7,35 @@ def gitUrl = 'https://github.com/Penrillian/LongStringLoader.git'   // Git repos
 group = 'com.penrillian'
 version = '0.0.2-beta'
 
+android {
+    compileSdkVersion 24
+    buildToolsVersion '24.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName version
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+}
+
 install {
     repositories.mavenInstaller {
         pom {
@@ -42,35 +71,6 @@ install {
     }
 }
 
-android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.2'
-
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 24
-        versionCode 1
-        versionName version
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
-}
-
-dependencies {
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
-    compile 'com.android.support:appcompat-v7:24.2.1'
-}
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -92,11 +92,13 @@ artifacts {
 }
 
 Properties properties = new Properties()
-try {
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-} catch (Exception ignored) {
-    properties.put('bintray.user', System.env.BINTRAY_USER)
-    properties.put('bintray.apikey', System.env.BINTRAY_APIKEY)
+bintrayUpload.doFirst {
+    try {
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    } catch (Exception ignored) {
+        properties.put('bintray.user', System.env.BINTRAY_USER)
+        properties.put('bintray.apikey', System.env.BINTRAY_APIKEY)
+    }
 }
 
 bintray {
