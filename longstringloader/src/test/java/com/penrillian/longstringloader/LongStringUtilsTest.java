@@ -95,6 +95,6 @@ public class LongStringUtilsTest
 	@Test
 	public void testFailingTest() throws Exception
 	{
-		Assert.assertEquals(2, 2);
+		Assert.assertEquals(2, 1);
 	}
 }
