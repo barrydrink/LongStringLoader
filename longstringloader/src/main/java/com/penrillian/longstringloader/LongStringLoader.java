@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
+/**
+ * The LongStringLoader class is the public interface that provides
+ * the long string loading functionality
+ */
 public class LongStringLoader
 {
 	private int stringSplitLength = 5000;
@@ -19,6 +22,17 @@ public class LongStringLoader
 	private final Context context;
 	private StringLoadTask stringLoadingTask;
 
+	/**
+	 * This constructor provides the default string loading behaviour.
+	 * See the other constructor for more specialised behaviour
+	 *
+	 * @param context						context used to create TextViews. Not null.
+	 * @param listener						the listener to be notified when the long
+	 *                          			string has been completely loaded.
+	 * @param containerLayout				the layout where the long string is to be displayed.
+	 *                          			TextView objects will be appended to this. Not null.
+	 * @throws LongStringLoaderException	if parameters are invalid.
+	 */
 	public LongStringLoader(@NonNull Context context, LongStringLoadCompleteListener listener, @NonNull LinearLayout containerLayout) throws LongStringLoaderException
 	{
 		if(context == null || containerLayout == null || threadSleepMillis < 0)
@@ -30,6 +44,22 @@ public class LongStringLoader
 		this.containerLayout = containerLayout;
 	}
 
+	/**
+	 * This constructor provides more control over the string loading process.
+	 * The <code>splitStringLength</code> and <code>threadSleepMillis</code>
+	 * params will alter the responsiveness of the UI and speed of string loading
+	 *
+	 * @param context						context used to create TextViews. Not null.
+	 * @param listener						the listener to be notified when the long
+	 *                          			string has been completely loaded.
+	 * @param containerLayout				the layout where the long string is to be displayed.
+	 *                          			TextView objects will be appended to this. Not null.
+	 * @param splitStringLength				the length the long string will be broken up into. These
+	 *                          			'chunks' of the long string are loaded one by one.
+	 * @param threadSleepMillis				the length of time in milliseconds the LongStringLoader will sleep between loading
+	 *                          			each chunk of string. Must be above -1
+	 * @throws LongStringLoaderException	if parameters are invalid.
+	 */
 	public LongStringLoader(@NonNull Context context, LongStringLoadCompleteListener listener, @NonNull LinearLayout containerLayout, int splitStringLength, int threadSleepMillis) throws LongStringLoaderException
 	{
 		this(context, listener, containerLayout);
