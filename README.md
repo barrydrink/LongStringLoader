@@ -22,7 +22,7 @@ See the example app or example code below for usage instructions.
 <dependency>
   <groupId>com.penrillian</groupId>
   <artifactId>longstringloader</artifactId>
-  <version>0.0.1-beta</version>
+  <version>0.0.2-beta</version>
   <type>pom</type>
 </dependency>
 ```
@@ -30,13 +30,13 @@ See the example app or example code below for usage instructions.
 #### Gradle
 
 ```
-compile 'com.penrillian:longstringloader:0.0.1-beta'
+compile 'com.penrillian:longstringloader:0.0.2-beta'
 ```
 
 #### Ivy
 
 ```
-<dependency org='com.penrillian' name='longstringloader' rev='0.0.1-beta'>
+<dependency org='com.penrillian' name='longstringloader' rev='0.0.2-beta'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -73,4 +73,5 @@ public class MainActivity extends AppCompatActivity implements LongStringLoadCom
     {
         //do any post string loading work here, such as hiding a progress bar
     }
+}
 ```
