@@ -71,6 +71,13 @@ public class LongStringLoader
 		this.stringSplitLength = splitStringLength;
 	}
 
+	/**
+	 * This constructor provides more control over the string loading process.
+	 * The <code>splitStringLength</code> and <code>threadSleepMillis</code>
+	 * params will alter the responsiveness of the UI and speed of string loading
+	 *
+	 * @param stringToLoad		the string to display
+	 */
 	public void load(String stringToLoad)
 	{
 		stringLoadingTask = new StringLoadTask(stringToLoad);
@@ -137,6 +144,9 @@ public class LongStringLoader
 
 	}
 
+	/**
+	 * Stop the string loading process
+	 */
 	public void stop()
 	{
 		stringLoadingTask.stop();
