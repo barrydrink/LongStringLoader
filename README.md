@@ -12,11 +12,11 @@ The motivation for this component was the requirement by Google to display their
 
 Loading such a long string will take longer using LongStringLoader, but the UI will not be blocked, allowing the user to scroll through the string as it loads.
 
-See the example app for usage instructions.
+See the example app or example code below for usage instructions.
 
-To include in your project:
+###To include in your project:
 
-### Maven
+#### Maven
 
 ```
 <dependency>
@@ -27,16 +27,50 @@ To include in your project:
 </dependency>
 ```
 
-### Gradle
+#### Gradle
 
 ```
 compile 'com.penrillian:longstringloader:0.0.1-beta'
 ```
 
-### Ivy
+#### Ivy
 
 ```
 <dependency org='com.penrillian' name='longstringloader' rev='0.0.1-beta'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
+```
+
+
+###Example using Google's open source license string:
+```
+import com.penrillian.longstringloader.LongStringLoadCompleteListener;
+import com.penrillian.longstringloader.LongStringLoader;
+import com.penrillian.longstringloader.LongStringLoaderException;
+
+
+public class MainActivity extends AppCompatActivity implements LongStringLoadCompleteListener
+{
+    private LongStringLoader longStringLoader;
+	private LinearLayout textViewLayout;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+		textViewLayout = (LinearLayout) findViewById(R.id.text_view_layout);
+		longStringLoader = new LongStringLoader(this, this, textViewLayout);
+		try
+        {
+            String longString = GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this);
+            longStringLoader.load(longString);
+        } catch (LongStringLoaderException ignored) {}
+    }
+    
+    @Override
+    public void onStringLoadComplete()
+    {
+        //do any post string loading work here, such as hiding a progress bar
+    }
 ```
