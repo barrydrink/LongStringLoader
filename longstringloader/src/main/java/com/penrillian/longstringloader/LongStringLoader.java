@@ -72,11 +72,9 @@ public class LongStringLoader
 	}
 
 	/**
-	 * This constructor provides more control over the string loading process.
-	 * The <code>splitStringLength</code> and <code>threadSleepMillis</code>
-	 * params will alter the responsiveness of the UI and speed of string loading
+	 * Loads the string into the UI
 	 *
-	 * @param stringToLoad		the string to display
+	 * @param stringToLoad	the string to display
 	 */
 	public void load(String stringToLoad)
 	{
