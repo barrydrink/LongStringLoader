@@ -7,8 +7,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.penrillian.longstringloader.LongStringLoadCompleteListener;
+import com.penrillian.longstringloader.LongStringLoader;
+import com.penrillian.longstringloader.LongStringLoaderException;
 
-public class RecyclerViewExampleActivity extends AppCompatActivity implements LongStringLoader.LongStringLoadCompleteListener
+public class RecyclerViewExampleActivity extends AppCompatActivity implements LongStringLoadCompleteListener
 {
 	private LinearLayout mLongStringLayout;
 	private RelativeLayout mLoadingLayout;
@@ -21,7 +24,13 @@ public class RecyclerViewExampleActivity extends AppCompatActivity implements Lo
 
 		mLoadingLayout = (RelativeLayout) findViewById(R.id.loading_layout);
 		mLongStringLayout = (LinearLayout) findViewById(R.id.long_string_layout);
-		new LongStringLoader(this, GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this), mLongStringLayout);
+		try
+		{
+			new LongStringLoader(this, GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this), mLongStringLayout);
+		} catch (LongStringLoaderException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
