@@ -6,7 +6,7 @@ apply plugin: 'jacoco-android'
 def siteUrl = 'https://github.com/Penrillian/LongStringLoader'      // Homepage URL of the library
 def gitUrl = 'https://github.com/Penrillian/LongStringLoader.git'   // Git repository URL
 group = 'com.penrillian'
-version = '0.0.4-beta'
+version = '0.0.5-beta'
 
 android {
     compileSdkVersion 24
