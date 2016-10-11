@@ -27,7 +27,7 @@ public class LongStringLoaderTest
 		longStringLoadCompleteListener = new LongStringLoadCompleteListener()
 		{
 			@Override
-			public void onStringLoadComplete()
+			public void onLongStringLoadComplete()
 			{
 
 			}
@@ -36,7 +36,7 @@ public class LongStringLoaderTest
 
 	private LongStringLoader createLoaderWithSplitLength(int splitLength) throws LongStringLoaderException
 	{
-		return new LongStringLoader(context, longStringLoadCompleteListener, linearLayout, splitLength, 0);
+		return new LongStringLoader(longStringLoadCompleteListener, "", linearLayout);
 	}
 
 	@Test
@@ -47,42 +47,12 @@ public class LongStringLoaderTest
 	}
 
 	@Test
-	public void testCreateWithInvalidParamsThrowsException1()
+	public void testCreateWithInvalidParamsThrowsException()
 	{
 		LongStringLoader loader = null;
 		try
 		{
-			loader = new LongStringLoader(null, longStringLoadCompleteListener, linearLayout);
-		} catch (LongStringLoaderException e)
-		{
-			Assert.assertNull(loader);
-			return;
-		}
-		Assert.assertTrue(false);
-	}
-
-	@Test
-	public void testCreateWithInvalidParamsThrowsException2()
-	{
-		LongStringLoader loader = null;
-		try
-		{
-			loader = new LongStringLoader(context, longStringLoadCompleteListener, null);
-		} catch (LongStringLoaderException e)
-		{
-			Assert.assertNull(loader);
-			return;
-		}
-		Assert.assertTrue(false);
-	}
-
-	@Test
-	public void testCreateWithInvalidParamsThrowsException3()
-	{
-		LongStringLoader loader = null;
-		try
-		{
-			loader = new LongStringLoader(context, longStringLoadCompleteListener, linearLayout, 100, -55);
+			loader = new LongStringLoader(longStringLoadCompleteListener, "", null);
 		} catch (LongStringLoaderException e)
 		{
 			Assert.assertNull(loader);

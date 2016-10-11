@@ -1,11 +1,9 @@
 package com.penrillian.longstringloader;
 
-import android.content.Context;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.view.View;
+import android.os.AsyncTask;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -15,138 +13,58 @@ import java.util.List;
  */
 public class LongStringLoader
 {
-	private int stringSplitLength = 5000;
-	private int threadSleepMillis = 1000;
-	private final LinearLayout containerLayout;
-	private final LongStringLoadCompleteListener listener;
-	private final Context context;
-	private StringLoadTask stringLoadingTask;
+	private RecyclerView mRecyclerView;
+	private LinearLayoutManager mLinearLayoutManager;
+	private final LongStringLoadCompleteListener mListener;
+	private final LinearLayout mContainerLayout;
+	private RecyclerAdapter mAdapter;
 
 	/**
-	 * This constructor provides the default string loading behaviour.
-	 * See the other constructor for more specialised behaviour
+	 * This constructor set up the object and loads the string into the UI
 	 *
-	 * @param context						context used to create TextViews. Not null.
 	 * @param listener						the listener to be notified when the long
-	 *                          			string has been completely loaded.
+	 *                          			string has been processed and asynchronous
+	 *                          			displaying has begun. The UI should be fully responsive at this point.
+	 * @param stringToLoad					the string to display
 	 * @param containerLayout				the layout where the long string is to be displayed.
 	 *                          			TextView objects will be appended to this. Not null.
 	 * @throws LongStringLoaderException	if parameters are invalid.
 	 */
-	public LongStringLoader(@NonNull Context context, LongStringLoadCompleteListener listener, @NonNull LinearLayout containerLayout) throws LongStringLoaderException
+	public LongStringLoader(LongStringLoadCompleteListener listener, String stringToLoad, LinearLayout containerLayout) throws LongStringLoaderException
 	{
-		if(context == null || containerLayout == null || threadSleepMillis < 0)
+		if(containerLayout == null)
 		{
 			throw new LongStringLoaderException("Invalid parameters");
 		}
-		this.context = context;
-		this.listener = listener;
-		this.containerLayout = containerLayout;
-	}
+		mListener = listener;
+		mContainerLayout = containerLayout;
 
-	/**
-	 * This constructor provides more control over the string loading process.
-	 * The <code>splitStringLength</code> and <code>threadSleepMillis</code>
-	 * params will alter the responsiveness of the UI and speed of string loading
-	 *
-	 * @param context						context used to create TextViews. Not null.
-	 * @param listener						the listener to be notified when the long
-	 *                          			string has been completely loaded.
-	 * @param containerLayout				the layout where the long string is to be displayed.
-	 *                          			TextView objects will be appended to this. Not null.
-	 * @param splitStringLength				the length the long string will be broken up into. These
-	 *                          			'chunks' of the long string are loaded one by one.
-	 * @param threadSleepMillis				the length of time in milliseconds the LongStringLoader will sleep between loading
-	 *                          			each chunk of string. Must be above -1
-	 * @throws LongStringLoaderException	if parameters are invalid.
-	 */
-	public LongStringLoader(@NonNull Context context, LongStringLoadCompleteListener listener, @NonNull LinearLayout containerLayout, int splitStringLength, int threadSleepMillis) throws LongStringLoaderException
-	{
-		this(context, listener, containerLayout);
-		if(threadSleepMillis < 0)
+		class Splitter extends AsyncTask<String, Void, List<String>>
 		{
-			throw new LongStringLoaderException("Invalid parameters");
-		}
-		this.threadSleepMillis = threadSleepMillis;
-		this.stringSplitLength = splitStringLength;
-	}
-
-	/**
-	 * Loads the string into the UI
-	 *
-	 * @param stringToLoad	the string to display
-	 */
-	public void load(String stringToLoad)
-	{
-		stringLoadingTask = new StringLoadTask(stringToLoad);
-		new Thread(stringLoadingTask).start();
-	}
-	Handler handler = new Handler();
-
-	class StringLoadTask implements Runnable
-	{
-		private volatile boolean stop;
-		private final String stringToLoad;
-		TextView currentTextView;
-
-		public StringLoadTask(String stringToLoad)
-		{
-			this.stringToLoad = stringToLoad;
-		}
-
-		public void stop()
-		{
-			stop = true;
-		}
-
-		@Override
-		public void run()
-		{
-			stop = false;
-			List<String> licenceList = LongStringUtils.getSplitString(stringToLoad, stringSplitLength);
-			for (final String string : licenceList)
+			@Override
+			protected List<String> doInBackground(String... params)
 			{
-				if(stop)
-					return;
-				handler.post(new Runnable()
+				return LongStringUtils.getSplitString(params[0], 5000);
+			}
+
+			@Override
+			protected void onPostExecute(List<String> strings)
+			{
+				super.onPostExecute(strings);
+
+				mRecyclerView = new RecyclerView(mContainerLayout.getContext());
+				mContainerLayout.addView(mRecyclerView);
+				mLinearLayoutManager = new LinearLayoutManager(mContainerLayout.getContext());
+				mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+				mAdapter = new RecyclerAdapter(strings);
+				mRecyclerView.setAdapter(mAdapter);
+				if(mListener != null)
 				{
-					@Override
-					public void run()
-					{
-						currentTextView = new TextView(context);
-						currentTextView.setVisibility(View.GONE);
-						currentTextView.append(string);
-						currentTextView.setVisibility(View.VISIBLE);
-						containerLayout.addView(currentTextView);
-					}
-				});
-				try
-				{
-					Thread.sleep(threadSleepMillis);
-				}
-				catch (InterruptedException e)
-				{
-					e.printStackTrace();
+					mListener.onLongStringLoadComplete();
 				}
 			}
-			handler.post(new Runnable()
-				 {
-					 @Override
-					 public void run()
-					 {
-						 listener.onStringLoadComplete();
-					 }
-				 }
-			);
 		}
-
-	}
-
-	/**
-	 * Stop the string loading process
-	 */
-	public void stop()
-	{
-		stringLoadingTask.stop();
+		new Splitter().execute(stringToLoad);
 	}
 }
