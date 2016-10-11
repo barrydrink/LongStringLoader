@@ -36,7 +36,7 @@ public class LongStringLoaderTest
 
 	private LongStringLoader createLoaderWithSplitLength(int splitLength) throws LongStringLoaderException
 	{
-		return new LongStringLoader(longStringLoadCompleteListener, "", linearLayout);
+		return new LongStringLoader(longStringLoadCompleteListener, linearLayout);
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class LongStringLoaderTest
 		LongStringLoader loader = null;
 		try
 		{
-			loader = new LongStringLoader(longStringLoadCompleteListener, "", null);
+			loader = new LongStringLoader(longStringLoadCompleteListener, null);
 		} catch (LongStringLoaderException e)
 		{
 			Assert.assertNull(loader);
