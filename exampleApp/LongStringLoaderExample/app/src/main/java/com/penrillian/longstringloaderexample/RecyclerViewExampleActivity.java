@@ -26,7 +26,7 @@ public class RecyclerViewExampleActivity extends AppCompatActivity implements Lo
 		mLongStringLayout = (LinearLayout) findViewById(R.id.long_string_layout);
 		try
 		{
-			new LongStringLoader(this, GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this), mLongStringLayout);
+			new LongStringLoader(this, mLongStringLayout).load(GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this));
 		} catch (LongStringLoaderException e)
 		{
 			e.printStackTrace();
