@@ -20,17 +20,16 @@ public class LongStringLoader
 	private RecyclerAdapter mAdapter;
 
 	/**
-	 * This constructor set up the object and loads the string into the UI
+	 * Constructor. Sets up the object
 	 *
 	 * @param listener						the listener to be notified when the long
 	 *                          			string has been processed and asynchronous
 	 *                          			displaying has begun. The UI should be fully responsive at this point.
-	 * @param stringToLoad					the string to display
 	 * @param containerLayout				the layout where the long string is to be displayed.
 	 *                          			TextView objects will be appended to this. Not null.
 	 * @throws LongStringLoaderException	if parameters are invalid.
 	 */
-	public LongStringLoader(LongStringLoadCompleteListener listener, String stringToLoad, LinearLayout containerLayout) throws LongStringLoaderException
+	public LongStringLoader(LongStringLoadCompleteListener listener, LinearLayout containerLayout) throws LongStringLoaderException
 	{
 		if(containerLayout == null)
 		{
@@ -38,7 +37,14 @@ public class LongStringLoader
 		}
 		mListener = listener;
 		mContainerLayout = containerLayout;
+	}
 
+	/**
+	 * Loads the string into the UI
+	 * @param stringToLoad		the string to display
+	 */
+	public void load(String stringToLoad)
+	{
 		class Splitter extends AsyncTask<String, Void, List<String>>
 		{
 			@Override
