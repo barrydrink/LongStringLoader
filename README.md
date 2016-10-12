@@ -22,7 +22,7 @@ See the example app or example code below for usage instructions.
 <dependency>
   <groupId>com.penrillian</groupId>
   <artifactId>longstringloader</artifactId>
-  <version>0.0.3-beta</version>
+  <version>0.0.5-beta</version>
   <type>pom</type>
 </dependency>
 ```
@@ -30,13 +30,13 @@ See the example app or example code below for usage instructions.
 #### Gradle
 
 ```
-compile 'com.penrillian:longstringloader:0.0.3-beta'
+compile 'com.penrillian:longstringloader:0.0.5-beta'
 ```
 
 #### Ivy
 
 ```
-<dependency org='com.penrillian' name='longstringloader' rev='0.0.3-beta'>
+<dependency org='com.penrillian' name='longstringloader' rev='0.0.5-beta'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -52,15 +52,15 @@ import com.penrillian.longstringloader.LongStringLoaderException;
 public class MainActivity extends AppCompatActivity implements LongStringLoadCompleteListener
 {
     private LongStringLoader longStringLoader;
-	private LinearLayout textViewLayout;
+	private LinearLayout linearLayout;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-		textViewLayout = (LinearLayout) findViewById(R.id.text_view_layout);
-		longStringLoader = new LongStringLoader(this, this, textViewLayout);
+		linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+		longStringLoader = new LongStringLoader(this, linearLayout);
 		try
         {
             String longString = GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(this);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements LongStringLoadCom
     }
     
     @Override
-    public void onStringLoadComplete()
+    public void onLongStringLoadComplete()
     {
         //do any post string loading work here, such as hiding a progress bar
     }
