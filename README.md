@@ -75,3 +75,6 @@ public class MainActivity extends AppCompatActivity implements LongStringLoadCom
     }
 }
 ```
+
+### Limitations
+In tests it was found that if the LinearLayout which is passed to LongStringLoader is contained within a ScrollView or NestedScrollView, LongStringLoader will not be able to improve the loading speed or UI responsiveness. This was a real use case for LongStringLoader - the app in question had an about box which displayed version numbers and legal info as well as Google's open source licence information, all within a ScrollView within a DialogFragment. The licence string had to be moved to its own DialogFragment. See the example app for a demo.
