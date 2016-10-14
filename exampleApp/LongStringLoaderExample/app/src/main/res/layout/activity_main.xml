@@ -16,5 +16,12 @@
         android:text="Load Open Source Licence String With LongStringLoader"
         android:layout_gravity="center_horizontal"
         android:onClick="showOpenSourceLicencingUsingLsl"/>
+    <Button
+        android:id="@+id/load_string_in_fragment_activity_dialog_gragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Load String in FragmentActivity's DialogFragment"
+        android:layout_gravity="center_horizontal"
+        android:onClick="loadStringInFragmentActivityDialogFragment"/>
 
 </LinearLayout>

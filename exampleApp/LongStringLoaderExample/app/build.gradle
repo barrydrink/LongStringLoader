@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.penrillian.longstringloaderexample"
         minSdkVersion 14
-        targetSdkVersion 24
+        targetSdkVersion 14
         versionCode 1
         versionName "1.0"
     }
@@ -25,5 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.google.android.gms:play-services-maps:9.6.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile 'com.penrillian:longstringloader:0.0.5-beta'
+    compile 'com.penrillian:longstringloader:0.0.6-beta'
 }

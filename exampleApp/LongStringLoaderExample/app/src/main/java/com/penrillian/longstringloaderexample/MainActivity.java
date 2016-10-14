@@ -23,4 +23,9 @@ public class MainActivity extends AppCompatActivity
 	{
 		startActivity(new Intent(this, TextViewExampleActivity.class));
 	}
+
+	public void loadStringInFragmentActivityDialogFragment(View view)
+	{
+		startActivity(new Intent(this, RecyclerViewExampleFragmentActivity.class));
+	}
 }
