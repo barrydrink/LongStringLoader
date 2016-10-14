@@ -16,16 +16,16 @@ public class MainActivity extends AppCompatActivity
 
 	public void showOpenSourceLicencingUsingLsl(View view)
 	{
-		startActivity(new Intent(this, RecyclerViewExampleActivity.class));
+		startActivity(new Intent(this, RecyclerViewActivityExample.class));
 	}
 
 	public void showOpenSourceLicencingWithoutUsingLsl(View view)
 	{
-		startActivity(new Intent(this, TextViewExampleActivity.class));
+		startActivity(new Intent(this, TextViewActivityExample.class));
 	}
 
 	public void loadStringInFragmentActivityDialogFragment(View view)
 	{
-		startActivity(new Intent(this, RecyclerViewExampleFragmentActivity.class));
+		startActivity(new Intent(this, RecyclerViewFragmentActivityExample.class));
 	}
 }

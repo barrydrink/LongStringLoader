@@ -15,11 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".TextViewExampleActivity">
+        <activity android:name=".TextViewActivityExample">
         </activity>
-        <activity android:name=".RecyclerViewExampleActivity">
+        <activity android:name=".RecyclerViewActivityExample">
         </activity>
-        <activity android:name=".RecyclerViewExampleFragmentActivity">
+        <activity android:name=".RecyclerViewFragmentActivityExample">
         </activity>
     </application>
 

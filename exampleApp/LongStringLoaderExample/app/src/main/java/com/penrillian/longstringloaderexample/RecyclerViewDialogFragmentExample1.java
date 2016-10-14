@@ -10,14 +10,14 @@ import android.widget.Button;
 
 import com.google.android.gms.common.GoogleApiAvailability;
 
-public class RecyclerViewExampleDialogFragment extends DialogFragment
+public class RecyclerViewDialogFragmentExample1 extends DialogFragment
 {
 	private Button showLicenceButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.recycler_view_dialog_fragment_example, container);
+		View view = inflater.inflate(R.layout.recycler_view_dialog_fragment_example_1, container);
 		getDialog().setTitle("About");
 
 		final String licence = GoogleApiAvailability.getInstance().getOpenSourceSoftwareLicenseInfo(getContext());
@@ -31,9 +31,9 @@ public class RecyclerViewExampleDialogFragment extends DialogFragment
 				{
 					Bundle bundle = new Bundle();
 					bundle.putString("licence_text", licence);
-					OpenSourceLicenceDialogFragment licenceDialog = new OpenSourceLicenceDialogFragment();
+					RecyclerViewDialogFragmentExample2 licenceDialog = new RecyclerViewDialogFragmentExample2();
 					licenceDialog.setArguments(bundle);
-					FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction().remove(RecyclerViewExampleDialogFragment.this);
+					FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction().remove(RecyclerViewDialogFragmentExample1.this);
 					licenceDialog.show(transaction, "");
 				}
 			});

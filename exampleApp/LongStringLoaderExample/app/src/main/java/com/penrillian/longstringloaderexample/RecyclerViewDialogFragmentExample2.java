@@ -13,7 +13,7 @@ import com.penrillian.longstringloader.LongStringLoadCompleteListener;
 import com.penrillian.longstringloader.LongStringLoader;
 import com.penrillian.longstringloader.LongStringLoaderException;
 
-public class OpenSourceLicenceDialogFragment extends DialogFragment implements LongStringLoadCompleteListener
+public class RecyclerViewDialogFragmentExample2 extends DialogFragment implements LongStringLoadCompleteListener
 {
 	private String licence;
 	private LinearLayout mLongStringLayout;
@@ -30,7 +30,7 @@ public class OpenSourceLicenceDialogFragment extends DialogFragment implements L
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		view = inflater.inflate(R.layout.open_source_licencing, container);
+		view = inflater.inflate(R.layout.recycler_view_dialog_fragment_example_2, container);
 		getDialog().setTitle("Open Source Licences");
 
 		mLoadingLayout = (RelativeLayout) view.findViewById(R.id.loading_layout);

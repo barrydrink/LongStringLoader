@@ -11,7 +11,7 @@ import com.penrillian.longstringloader.LongStringLoadCompleteListener;
 import com.penrillian.longstringloader.LongStringLoader;
 import com.penrillian.longstringloader.LongStringLoaderException;
 
-public class RecyclerViewExampleActivity extends AppCompatActivity implements LongStringLoadCompleteListener
+public class RecyclerViewActivityExample extends AppCompatActivity implements LongStringLoadCompleteListener
 {
 	private LinearLayout mLongStringLayout;
 	private RelativeLayout mLoadingLayout;
@@ -20,7 +20,7 @@ public class RecyclerViewExampleActivity extends AppCompatActivity implements Lo
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.recycler_view_example);
+		setContentView(R.layout.recycler_view_activity_example);
 
 		mLoadingLayout = (RelativeLayout) findViewById(R.id.loading_layout);
 		mLongStringLayout = (LinearLayout) findViewById(R.id.long_string_layout);
