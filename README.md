@@ -12,7 +12,7 @@ The motivation for this component was the requirement by Google to display their
 
 Loading such a long string will take longer using LongStringLoader, but the UI will not be blocked, allowing the user to scroll through the string as it loads.
 
-See the example app or example code below for usage instructions.
+See the example app or example code below for usage instructions. Tested on Android 4, 5 & 6.
 
 ###To include in your project:
 
