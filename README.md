@@ -22,7 +22,7 @@ See the example app or example code below for usage instructions.
 <dependency>
   <groupId>com.penrillian</groupId>
   <artifactId>longstringloader</artifactId>
-  <version>0.0.5-beta</version>
+  <version>0.0.6-beta</version>
   <type>pom</type>
 </dependency>
 ```
@@ -30,13 +30,13 @@ See the example app or example code below for usage instructions.
 #### Gradle
 
 ```
-compile 'com.penrillian:longstringloader:0.0.5-beta'
+compile 'com.penrillian:longstringloader:0.0.6-beta'
 ```
 
 #### Ivy
 
 ```
-<dependency org='com.penrillian' name='longstringloader' rev='0.0.5-beta'>
+<dependency org='com.penrillian' name='longstringloader' rev='0.0.6-beta'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
