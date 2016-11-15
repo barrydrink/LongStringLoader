@@ -8,7 +8,6 @@ engines:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
         enabled: true
-        format: "^[a-z][a-zA-Z0-9]*$"
     channel: "beta"
   pmd:
     enabled: true
