@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/Penrillian/LongStringLoader.svg?branch=master)](https://travis-ci.org/Penrillian/LongStringLoader)
 [![codecov](https://codecov.io/gh/Penrillian/LongStringLoader/branch/master/graph/badge.svg)](https://codecov.io/gh/Penrillian/LongStringLoader)
 [![Code Climate](https://codeclimate.com/github/Penrillian/LongStringLoader/badges/gpa.svg)](https://codeclimate.com/github/Penrillian/LongStringLoader)
+[![Issue Count](https://codeclimate.com/github/Penrillian/LongStringLoader/badges/issue_count.svg)](https://codeclimate.com/github/Penrillian/LongStringLoader)
 
 
 # LongStringLoader
