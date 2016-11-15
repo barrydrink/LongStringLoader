@@ -17,12 +17,3 @@ ratings:
   - "**.java"
 exclude_paths:
 - "**/test/**/*"
-
-
-
-
-
-
-
-
-
