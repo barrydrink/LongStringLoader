@@ -7,8 +7,7 @@ engines:
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
-        enabled: true
-        pattern: !ruby/regexp '^[a-z][a-zA-Z0-9]*$'
+        enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
