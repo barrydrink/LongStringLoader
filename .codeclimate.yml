@@ -8,7 +8,7 @@ engines:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
         enabled: true
-        pattern: "^[a-z][a-zA-Z0-9]*$"
+        pattern: '^[a-z][a-zA-Z0-9]*$'
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
