@@ -3,11 +3,21 @@ engines:
     enabled: true
   checkstyle:
     enabled: true
-	checks:
-		com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
-			enabled: false
-		com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
-			format: "^[a-z][a-z0-9][a-zA-Z0-9]*$"
+    checks:
+      com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck:
+        enabled: false
     channel: "beta"
   pmd:
     enabled: true
@@ -17,12 +27,3 @@ ratings:
   - "**.java"
 exclude_paths:
 - "**/test/**/*"
-
-
-
-
-
-
-
-
-
