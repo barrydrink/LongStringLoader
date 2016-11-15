@@ -8,6 +8,8 @@ engines:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
         enabled: true
+      com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
+        enabled: false
     channel: "beta"
   pmd:
     enabled: true
