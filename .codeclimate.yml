@@ -7,10 +7,12 @@ engines:
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
-        enabled: true
+        enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
+        enabled: false
+      com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck:
         enabled: false
     channel: "beta"
   pmd:
