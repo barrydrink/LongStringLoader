@@ -3,9 +3,8 @@ engines:
     enabled: true
   checkstyle:
     enabled: true
+    config: "checkstyle.xml"
     checks:
-      enabled: true
-      config: "checkstyle.xml"
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
