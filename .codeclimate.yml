@@ -7,7 +7,8 @@ engines:
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
-        enabled: false
+        enabled: true
+        config: "<module name=\"MemberName\"> <property name=\"format\" value=\"^[a-z][a-zA-Z0-9]*$\"/> <message key=\"name.invalidPattern\" value=\"Member name ''{0}'' must match pattern ''{1}''.\"/> </module>"
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
