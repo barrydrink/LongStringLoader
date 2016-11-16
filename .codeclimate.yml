@@ -3,7 +3,7 @@ engines:
     enabled: true
   checkstyle:
     enabled: true
-    config: "checkstye.xml"
+    config: "checkstyle.xml"
     checks:
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
