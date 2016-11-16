@@ -4,6 +4,7 @@ engines:
   checkstyle:
     enabled: true
     checks:
+      enabled: true
       config: "checkstyle.xml"
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
