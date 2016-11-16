@@ -4,11 +4,9 @@ engines:
   checkstyle:
     enabled: true
     checks:
+      config: "checkstyle.xml"
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
-      com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
-        enabled: true
-        config: "checkstyle.xml"
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
