@@ -8,7 +8,7 @@ engines:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
         enabled: true
-        config: ".checkstyle.xml"
+        config: "checkstyle.xml"
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
