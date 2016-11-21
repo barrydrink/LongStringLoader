@@ -3,10 +3,12 @@ engines:
     enabled: true
   checkstyle:
     enabled: true
-    config: "checkstyle.xml"
+#    config: "checkstyle.xml"
     checks:
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
+#      com.puppycrawl.tools.checkstyle.checks.sizes.MemberNames:
+#        enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
