@@ -4,21 +4,6 @@ engines:
   checkstyle:
     enabled: true
 #    config: "checkstyle.xml"
-    checks:
-      com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
-        enabled: false
-      com.puppycrawl.tools.checkstyle.checks.sizes.MemberNames:
-        enabled: false
-      com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
-        enabled: false
-      com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck:
-        enabled: false
-      com.puppycrawl.tools.checkstyle.checks.naming.ParameterNameCheck:
-        enabled: false
-      com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck:
-        enabled: false
-      com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck:
-        enabled: false
     channel: "beta"
   pmd:
     enabled: true
