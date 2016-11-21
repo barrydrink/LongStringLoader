@@ -7,7 +7,7 @@ engines:
     checks:
       com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
         enabled: false
-      com.puppycrawl.tools.checkstyle.checks.sizes.MemberNames:
+      com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck:
         enabled: false
       com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck:
         enabled: false
