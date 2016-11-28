@@ -23,5 +23,11 @@
         android:text="Load String in FragmentActivity's DialogFragment"
         android:layout_gravity="center_horizontal"
         android:onClick="loadStringInFragmentActivityDialogFragment"/>
-
+    <Button
+        android:id="@+id/load_string_in_web_view_in_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Load String in WebView in Dialog"
+        android:layout_gravity="center_horizontal"
+        android:onClick="loadStringInWebViewInDialog"/>
 </LinearLayout>
