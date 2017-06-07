@@ -10,7 +10,7 @@ version = '0.0.6-beta'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 14
@@ -65,7 +65,7 @@ install {
                     developer {
                         id 'barry'
                         name 'Barry Drinkwater'
-                        email 'barry@penrillian.com'
+                        email 'barry.drinkwater@gmail.com'
                     }
                 }
                 scm {
