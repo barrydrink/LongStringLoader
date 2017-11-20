@@ -2,7 +2,7 @@
 [![Download](https://api.bintray.com/packages/penrillian/penrillian-maven/LongStringLoader/images/download.svg) ](https://bintray.com/penrillian/penrillian-maven/LongStringLoader/_latestVersion)
 [![Build Status](https://travis-ci.org/bellabling/LongStringLoader.svg?branch=master)](https://travis-ci.org/bellabling/LongStringLoader)
 [![codecov](https://codecov.io/gh/bellabling/LongStringLoader/branch/master/graph/badge.svg)](https://codecov.io/gh/bellabling/LongStringLoader)
-[![Code Climate](https://codeclimate.com/github/bellabling/LongStringLoader/badges/gpa.svg)](https://codeclimate.com/github/bellabling/LongStringLoader)
+[![Code Climate](https://codeclimate.com/github/barrydrink/LongStringLoader/badges/gpa.svg)](https://codeclimate.com/github/barrydrink/LongStringLoader)
 [![Issue Count](https://codeclimate.com/github/barrydrink/LongStringLoader/badges/issue_count.svg)](https://codeclimate.com/github/barrydrink/LongStringLoader)
 
 
