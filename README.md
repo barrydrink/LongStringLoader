@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Download](https://api.bintray.com/packages/penrillian/penrillian-maven/LongStringLoader/images/download.svg) ](https://bintray.com/penrillian/penrillian-maven/LongStringLoader/_latestVersion)
-[![Build Status](https://travis-ci.org/bellabling/LongStringLoader.svg?branch=master)](https://travis-ci.org/bellabling/LongStringLoader)
-[![codecov](https://codecov.io/gh/bellabling/LongStringLoader/branch/master/graph/badge.svg)](https://codecov.io/gh/bellabling/LongStringLoader)
+[![Build Status](https://travis-ci.org/barrydrink/LongStringLoader.svg?branch=master)](https://travis-ci.org/barrydrink/LongStringLoader)
+[![codecov](https://codecov.io/gh/barrydrink/LongStringLoader/branch/master/graph/badge.svg)](https://codecov.io/gh/barrydrink/LongStringLoader)
 [![Code Climate](https://codeclimate.com/github/barrydrink/LongStringLoader/badges/gpa.svg)](https://codeclimate.com/github/barrydrink/LongStringLoader)
 [![Issue Count](https://codeclimate.com/github/barrydrink/LongStringLoader/badges/issue_count.svg)](https://codeclimate.com/github/barrydrink/LongStringLoader)
 
